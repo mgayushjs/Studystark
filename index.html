@@ -3,61 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyStark ↔ VidyaRays Flow</title>
+  <title>StudyStark → VidyaRays Flow</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 80px; background: #f7f7f7; }
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 80px; }
     h2 { color: #333; }
-    p { color: #555; font-size: 18px; }
-    .progress-container {
-      width: 80%;
-      background: #ddd;
-      border-radius: 25px;
-      margin: 20px auto;
-      height: 25px;
-      overflow: hidden;
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #4caf50;
-      transition: width 1s linear;
-    }
+    button:hover { background: #0056b3; }
+    #timer { font-size: 20px; margin-top: 20px; display: none; }
   </style>
 </head>
 <body>
-  <h2>🔄 StudyStark ↔ VidyaRays Auto Flow</h2>
-  <p id="message">Starting with StudyStark... VidyaRays will open instantly in a new tab.</p>
+  <h2>🔑 Follow the Steps</h2>
 
-  <div class="progress-container">
-    <div class="progress-bar" id="progress"></div>
-  </div>
+  <p><b>Step 1:</b> Open StudyStark and click Verify.</p>
+  <button onclick="window.open('https://studystark.site/task_verify.html','_blank')">Open StudyStark</button>
+
+  <p><b>Step 2:</b> After Verify, open VidyaRays.</p>
+  <button onclick="openVidya()">Open VidyaRays</button>
+
+  <p id="timer">⏳ Waiting 60s before redirect... <span id="count">60</span></p>
 
   <script>
-    // Open VidyaRays instantly in new tab
-    window.open("https://vidyarays.com/safe.php?link=AJ8", "_blank");
-
-    let countdown = 60; // 1 minute
-    let progressBar = document.getElementById("progress");
-    let message = document.getElementById("message");
+    function openVidya() {
+      window.open("https://vidyarays.com/safe.php?link=AJ85L", "_blank");
+      startCountdown();
+    }
 
     function startCountdown() {
-      countdown = 60;
-      progressBar.style.width = "0%";
-
-      let timer = setInterval(function() {
-        countdown--;
-        progressBar.style.width = (100 - (countdown / 60) * 100) + "%";
-        message.innerText = "Redirecting to StudyStark again in " + countdown + "s";
-
-        if (countdown <= 0) {
-          clearInterval(timer);
-          // Redirect to StudyStark
+      let count = 60;
+      document.getElementById("timer").style.display = "block";
+      let interval = setInterval(() => {
+        count--;
+        document.getElementById("count").innerText = count;
+        if (count <= 0) {
+          clearInterval(interval);
+          // Redirect back to StudyStark (or any 3rd step you want)
           window.location.href = "https://studystark.site/task_verify.html";
         }
       }, 1000);
     }
-
-    window.onload = startCountdown;
   </script>
 </body>
 </html>
