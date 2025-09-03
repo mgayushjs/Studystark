@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyStark ↔ VidyaRays Flow</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 80px; background: #f7f7f7; }
+    h2 { color: #333; }
+    p { color: #555; font-size: 18px; }
+    .progress-container {
+      width: 80%;
+      background: #ddd;
+      border-radius: 25px;
+      margin: 20px auto;
+      height: 25px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #4caf50;
+      transition: width 1s linear;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔄 StudyStark ↔ VidyaRays Auto Flow</h2>
+  <p id="message">Starting with StudyStark... VidyaRays will open instantly in a new tab.</p>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progress"></div>
+  </div>
+
+  <script>
+    // Open VidyaRays instantly in new tab
+    window.open("https://vidyarays.com/safe.php?link=AJ8", "_blank");
+
+    let countdown = 60; // 1 minute
+    let progressBar = document.getElementById("progress");
+    let message = document.getElementById("message");
+
+    function startCountdown() {
+      countdown = 60;
+      progressBar.style.width = "0%";
+
+      let timer = setInterval(function() {
+        countdown--;
+        progressBar.style.width = (100 - (countdown / 60) * 100) + "%";
+        message.innerText = "Redirecting to StudyStark again in " + countdown + "s";
+
+        if (countdown <= 0) {
+          clearInterval(timer);
+          // Redirect to StudyStark
+          window.location.href = "https://studystark.site/task_verify.html";
+        }
+      }, 1000);
+    }
+
+    window.onload = startCountdown;
+  </script>
+</body>
+</html>
